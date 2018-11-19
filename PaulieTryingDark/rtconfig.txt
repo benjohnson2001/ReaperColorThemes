@@ -46,24 +46,28 @@ tcp_folderindent 13
 ; font #8 - tcp.label & recinput
 ; -------------------------------------------
 
-
-
-;row1: [record] [monitor] [title] [routing] [inputFX] [fx] [fxbypass] [automation] [mute] [solo]
-;row2: [vol fader + label] [pan fader + label]
 		
 ; -----------:: TCP ::---------------
 
 set leftButtonMargin [4 3 0 0]
 set rightButtonMargin [-4 3 0 0]
 set extraTopMargin [0 3 0 0]
-set regularButtonSize [20 20 10 20]
-set folderMargin [17 0 0 0]
+set folderMargin [19 0 0 0]
 
 clear tcp.*
 
 set tcp.size [300 100]
 
+set tcp.meter [4 4 1 15 0 0 0 0]
+
 set tcp.recarm w>0 + leftButtonMargin [0 0 20 20 0 0 0 0]
+
+set folderCompressX - tcp.size{0} 20
+set tcp.foldercomp [folderCompressX 2 18 15 1 0 1 0]
+
+set folderX - tcp.size{0} 20
+set folderY - tcp.size{1} 19
+set tcp.folder h>40 [folderX folderY 18 15 1 1 1 1] [0]
 
 set soloX - tcp.size{0} + 20 folderMargin{0}
 set tcp.solo + rightButtonMargin [soloX 0 20 20 1 0 1 0]
@@ -93,40 +97,22 @@ set tcp.label.margin [0 0 0 0 0.5 0.5]
 set tcp.label.color [215 215 215]
 
 
+set tcp.volume h>75 [6 60 150 14 0 1 1 1] [0]
+set tcp.volume.color h>75 [215 215 215 0 215 215 215 0] [0]
+set tcp.volume.label h>75 [15 78 250 14 0 1 1 1] [0]
+set tcp.volume.label.color h>75 [215 215 215 0 24 24 24 0] [0]
+set tcp.volume.label.margin h>75 [0 0 0 0 0 0] [0]
+set tcp.volume.fadermode h>75 [-1] [0]
 
-set minimumHeight [85]
+set tcp.pan h>75 [170 60 100 14 1 1 1 1] [0]
+set tcp.pan.color h>75 [215 215 215 0 215 215 215 0] [0]
+set tcp.pan.label h>75 [170 78 100 14 1 1 1 1] [0]
+set tcp.pan.label.color h>75 [215 215 215 0 24 24 24 0] [0]
+set tcp.pan.label.margin h>75 [0 0 0 0 0.5 0.5] [0]
+set tcp.pan.fadermode h>75 [-1] [0]
 
-set volumeWidth * 2 / w 3
-set faderY 50
-set faderLabelY + faderY 14
+front tcp.pan.label
 
-set tcp.volume h>minimumHeight{0} [10 faderY volumeWidth 20 0 0 0 0] [0]
-set tcp.volume.color [215 215 215 0 215 215 215 0]
-set tcp.volume.fadermode [-1]
-
-set tcp.volume.label [6 faderLabelY 62 15 0 0 0 0]
-set tcp.volume.label.color [215 215 215 0 24 24 24 0]
-
-
-set panLabelX * 3 / w 4
-set panWidth / w 6
-
-set tcp.pan [panLabelX faderY panWidth 14 0 0 0 0]
-set tcp.pan.color [215 215 215 0 215 215 215 0]
-set tcp.pan.fadermode [-1]
-
-set tcp.pan.label [panLabelX faderLabelY panWidth 15 0 0 0 0]
-set tcp.pan.label.color	[215 215 215 0 24 24 24 0]
-set tcp.pan.label.margin [0 0 0 0 0.5 0.5]
-
-front tcp.pan.label tcp.volume.label
-
-
-
-
-
-;set tcp.meter [3 3 63 33 0 0 0.5 0]
-;set tcp.solo [63 3 63 20 0.5 0 1 0]
 
 ;set tcp.meter [4 4 1 15 0 0 0 0]
 
@@ -142,18 +128,21 @@ front tcp.pan.label tcp.volume.label
 
 
 
+;set tcp.fxparm [75 25 50 140 0 0 0 0]
 
+
+;set tcp.fxparm + leftButtonMargin [0 30 100 100 0 0 0 0]
+
+set tcp.fxparm h>105 + leftButtonMargin [5 35 w 26 0 0 0 0] [0]
+set tcp.fxparm.margin [0 0 0 0 0 0]
+set tcp.fxparm.font [-1]
 
 ;set tcp.fxparm \
-;  w>200 trackpanmode<4 [5 83 877 36 0 0 1 1] [5 83 877 36 0 0 1 1] w>125 h>110 [5 83 875 38 0 0 1 1] [0]
+;  w>200 trackpanmode<4 [5 83 877 36 0 0 1 1] [5 83 877 36 0 0 1 1] w>125 ;h>110 [5 83 875 38 0 0 1 1] [0]
 
 
 
 
-;set tcp.folder \
-;  h>45 [886 104 18 15 1 1 1 1] h>24 folderdepth>=0 [0] [889 104 18 15 1 1 1 1] [0]
-;set tcp.foldercomp \
-;  h>45 [886 0 18 15 1 0 1 0] h>24 folderstate>=0 [0] [889 0 18 15 1 0 1 0] [0]
 
 
 
