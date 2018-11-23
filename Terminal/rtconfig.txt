@@ -54,11 +54,6 @@ tcp_folderindent 13
 
 
 
-
-
-
-
-
 set buttonSize [20 20 20 20]
 
 
@@ -454,10 +449,6 @@ set mcp.extmixer.mode [1]
 set mcp.extmixer.position [0]
 set mcp.folder 							folderstate<0 [11 278 12 21 0 1 0 1] [0 278 12 21 0 1 0 1]
 EndLayout
-
-
-
-
 
 
 
