@@ -1,5 +1,7 @@
 #>----------------------------------- GLOBALS -----------------------------------------
 
+;global_scale 2.0
+
 version 5
 tinttcp 0
 peaksedges 0
@@ -420,6 +422,16 @@ set mcp.volume.label [6 mcpVolLabelY mcpVolLabelWidth 14 1 1 1 1]
 set mcp.volume.label.color [215 215 215 0]
 set mcp.volume.label.margin [0 0 0 0 0.5 0.5]
 
+
+set mcp.extmixer.mode 					[0]	
+	set mcp.fxlist.font 				[2 66]
+	set mcp.fxlist.margin 				[5 0 5 0 0.5]
+	set mcp.sendlist.font 				[2 16] 
+	set mcp.sendlist.margin 			[5 0 5 0 0]
+	set mcp.fxparm.font                [2]
+	set mcp.fxparm.margin               [2 0 4 0 0]
+  
+  
 
 Layout "01. Default"
 set mcp.label mcp.label
