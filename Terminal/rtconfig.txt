@@ -115,16 +115,16 @@ set tcp.meter [4 4 1 1 0 0 0 0]
 
 ; bottom row
 
-  set tcp.volume h>70 [6 59 150 13 0 1 1 1] [0]
+  set tcp.volume h>70 [6 59 150 14 0 1 1 1] [0]
   set tcp.volume.color h>70 [215 215 215 0 215 215 215 0] [0]
-  set tcp.volume.label h>70 [15 77 250 14 0 1 1 1] [0]
+  set tcp.volume.label h>70 [10 77 250 14 0 1 1 1] [0]
   set tcp.volume.label.color h>70 [215 215 215 0] [0]
   set tcp.volume.label.margin h>70 [0 0 0 0 0 0] [0]
   set tcp.volume.fadermode h>70 [-1] [0]
 
-  set tcp.pan h>70 [170 59 100 13 1 1 1 1] [0]
+  set tcp.pan h>70 [172 60 100 12 1 1 1 1] [0]
   set tcp.pan.color h>70 [215 215 215 0 215 215 215 0] [0]
-  set tcp.pan.label h>70 [170 77 100 14 1 1 1 1] [0]
+  set tcp.pan.label h>70 [172 77 100 14 1 1 1 1] [0]
   set tcp.pan.label.color h>70 [215 215 215 0] [0]
   set tcp.pan.label.margin h>70 [0 0 0 0 0.5 0.5] [0]
   set tcp.pan.fadermode h>70 [-1] [0]
