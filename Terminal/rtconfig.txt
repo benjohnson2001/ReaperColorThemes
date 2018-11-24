@@ -335,7 +335,7 @@ set envFaderX - envLabelX 20
 set envFaderWidth / * envcp.size{0} 2 3
 
 set envcp.fader h>60 [envFaderX 72 envFaderWidth 12 0 1 1 1] [0]
-set envcp.fader.color h>60 [215 215 215 0 215 215 215 0] [0]
+set envcp.fader.color [0 0 0 0 0 0 0 0]
 
 
 set envLabelX - envcp.size{0} 80
