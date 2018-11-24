@@ -131,7 +131,8 @@ set tcp.meter [-4 -4 1 1 0 0 0 0]
 
   set folderX - tcp.size{0} 20
   set folderY - tcp.size{1} 19
-  set tcp.folder h>40 [folderX folderY 18 15 1 1 1 1] [0]
+;  set tcp.folder h>40 [folderX folderY 18 15 1 1 1 1] [0]
+  set tcp.folder folderstate=1 h>40 [folderX folderY 18 15 1 1 1 1] [0] [0]
 
 
 front tcp.pan.label
@@ -145,20 +146,34 @@ set tcp.trackidx [0]
 set tcp.fxbyp [0]
 
 
-Layout "01. Default"
-
+Layout "default"
+  set tcp.label .
 EndLayout
 
 
-Layout "02. Separator"
-clear tcp.*                     
-set tcp.size 			              	[311 90 126]
-set tcp.margin trans_flags&1 +:folderdepth:1 [-13 0 0 0] +:folderdepth:1 [0 0 0 0]
-set tcp.margin trans_flags&1 +:maxfolderdepth:1 [13 0 0 0] +:maxfolderdepth:1 [0 0 0 0]
-set tcp.label 							h>24 [1 1 308 87 0 0 1 1] [0]
-set tcp.label.margin 		          	[0 0 0 0 0.5 0]
-set tcp.label.color 		          	[215 215 215]
-set tcp.folder 			              	[5 250 14 14 0 1 0 1]
+Layout "label"
+
+  clear tcp.*                     
+
+  set tcp.size [300 100]
+  
+  
+  set tcpLabelMessageY - / h 2 12
+  set tcpLabelMessageWidth - w + folderMargin{x} 2
+  
+  set tcp.label [0 tcpLabelMessageY tcpLabelMessageWidth 20 0 0 0 0]
+  set tcp.label.margin [0 0 0 0 0.5 0.5]
+  set tcp.label.color [215 215 215 0]
+
+
+  set folderCompressX - tcp.size{0} 20
+  set tcp.foldercomp [folderCompressX 2 18 15 1 0 1 0]
+
+  set folderX - tcp.size{0} 20
+  set folderY - tcp.size{1} 19
+ ; set tcp.folder h>40 [folderX folderY 18 15 1 1 1 1] [0]
+  set tcp.folder folderstate=1 h>40 [folderX folderY 18 15 1 1 1 1] [0] [0]
+
 EndLayout
 
 
@@ -319,7 +334,7 @@ set envcp.fader.color [0 0 0 0 0 0 0 0]
 set envFaderX - envLabelX 20
 set envFaderWidth / * envcp.size{0} 2 3
 
-set envcp.fader h>60 [envFaderX 72 envFaderWidth 13 0 1 1 1] [0]
+set envcp.fader h>60 [envFaderX 72 envFaderWidth 12 0 1 1 1] [0]
 set envcp.fader.color h>60 [215 215 215 0 215 215 215 0] [0]
 
 
