@@ -60,8 +60,8 @@ set buttonSize [20 20 20 20]
 ; -----------:: TCP ::---------------
 
 
-set leftTcpButtonMargin [5 4 0 0]
-set rightTcpButtonMargin [5 4 0 0]
+set leftTcpButtonMargin [5 3 0 0]
+set rightTcpButtonMargin [5 3 0 0]
 set folderMargin [17 0 0 0]
 
 macro setTcpButtonFromLeft element i j
@@ -80,7 +80,7 @@ set tcp.size [300 100]
 
 
 ; hide the tcp meter
-set tcp.meter [4 4 1 1 0 0 0 0]
+set tcp.meter [-4 -4 1 1 0 0 0 0]
 
 
 ; top row
@@ -150,7 +150,7 @@ Layout "01. Default"
 EndLayout
 
 
-Layout "02. Separator" "mcp_tcp_separator"
+Layout "02. Separator"
 clear tcp.*                     
 set tcp.size 			              	[311 90 126]
 set tcp.margin trans_flags&1 +:folderdepth:1 [-13 0 0 0] +:folderdepth:1 [0 0 0 0]
@@ -437,7 +437,7 @@ set mcp.size [120 300]
 EndLayout
 
 
-Layout "03. Separator" "mcp_tcp_separator"
+Layout "03. Separator"
 
 clear mcp.*
 
