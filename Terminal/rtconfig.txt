@@ -295,8 +295,6 @@ set master.tcp.fxbyp [0]
 ; -----------:: MCP ::---------------
 
 
-
-
 set mcpMargin [5 6 0 0]
 set leftMcpButtonMargin [0 3 0 0]
 
@@ -372,7 +370,7 @@ set mcp.volume.label.margin [0 0 0 0 0.5 0.5]
 
 
 set mcp.extmixer.mode 					[0]	
-	set mcp.fxlist.font 				[2 66]
+	set mcp.fxlist.font 				[2 20]
 	set mcp.fxlist.margin 				[5 0 5 0 0.5]
 	set mcp.sendlist.font 				[2 16] 
 	set mcp.sendlist.margin 			[5 0 5 0 0]
