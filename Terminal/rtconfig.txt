@@ -147,7 +147,7 @@ set tcp.fxbyp [0]
 
 
 Layout "default"
-  set tcp.label .
+  set tcp.label tcp.label
 EndLayout
 
 
@@ -518,27 +518,54 @@ set master.mcp.extmixer.mode 			[0]
 
 
 clear trans.*
+
 set trans.size [1041 43]
-;set trans.size.minmax [415 107 415 107] ; fixed height when undocked
-set trans.size.minmax [415 43 1203 107]
-set trans.size.dockedheight w>921 [43] w>648 [68] w>414 [107] [43]
-front trans.bpm.tap
-; POSITION
-set trans.rew [5 4 49 34]
-set trans.stop [54 4 49 34]
-set trans.play [103 4 49 34]
-set trans.pause w>316 [152 4 49 34] [0]
-set trans.fwd w>414 [201 4 49 34] [0]
-set trans.rec w>414 [250 4 49 34] w>365 [201 4 49 34] [0]
-set trans.repeat w>414 [299 4 49 34] w>365 [250 4 49 34] w>316 [201 4 49 34] [152 4 49 34]
-set trans.automode w>414 [348 4 62 34] w>365 [299 4 62 34] w>316 [250 4 62 34] [201 4 62 34]
+
+;set trans.size.minmax [415 43 1203 107]   ; fixed height when undocked
+
+;set trans.size.dockedheight w>921 [43] w>648 [68] w>414 [107] [43]
+
+
+set trans.rew [5 4 35 33]
+set trans.stop [54 4 35 33]
+set trans.play [103 4 35 33]
+set trans.pause w>316 [152 4 35 33] [0]
+set trans.fwd w>414 [201 4 35 33] [0]
+set trans.rec w>414 [250 4 35 33] w>365 [201 4 35 33] [0]
+set trans.repeat w>414 [299 4 35 33] w>365 [250 4 35 33] w>316 [201 4 35 33] [152 4 35 33]
+
+
+
 set trans.status h>106 [104 67 305 34] h>67 w>730 [425 4 300 34] w>648 [425 4 610 34 0 0 1 0] [0] h>40 w>1202 [425 4 300 34] w>730 [425 4 300 16] w>648 [425 4 610 34 0 0 1 0] [0]
-set trans.bpm.tap h>106 [5 67 45 17] h>67 w>648 [425 43 45 19] [0] h>40 w>921 [732 4 45 17] w>875 [0] w>783 [732 4 45 17] [0]
-set trans.bpm.edit h>106 [5 67 45 34] h>67 w>730 [425 43 150 19] w>648 [425 43 302 19 0 0 0.5 0] [0] h>40 w>921 [732 4 45 34] w>875 [732 4 45 16] w>783 [732 4 45 34] [0]
+
+
+
+; bpm
+  set trans.bpm.tap h>106 [5 67 45 17] h>67 w>648 [425 43 45 19] [0] h>40 w>921 [732 4 45 17] w>875 [0] w>783 [732 4 45 17] [0]
+  set trans.bpm.edit h>106 [5 67 45 34] h>67 w>730 [425 43 150 19] w>648 [425 43 302 19 0 0 0.5 0] [0] h>40 w>921 [732 4 45 34] w>875 [732 4 45 16] w>783 [732 4 45 34] [0]
+  front trans.bpm.tap
+
+
+
+; time signature
+
 set trans.curtimesig h>106 [57 67 40 34] h>67 w>730 [582 43 143 19] w>648 [734 43 301 19 0.5 0 1 0] [0] h>40 w>921 [784 4 40 34] w>875 [732 22 45 16] w>830 [784 4 40 34] [0]
+
+
+
+; playrate
 set trans.rate h>106 [5 43 92 19 0 0 0 0] h>67 [5 43 92 19 0 0 0 0] h>40 w>1202 ?trans_docked ?trans_flags&2 [669 4 84 34 1 0 1 0] [0] [669 4 84 34 1 0 1 0] w>921 [831 4 84 34 0 0 0 0] w>875 [784 4 84 34 0 0 0 0] [0] 
 set trans.rate.fader [0]
+
+
+
+
+
+
+; selection
 set trans.sel h>106 [104 43 305 19 0 0 0 0] h>67 [104 43 305 19 0 0 0 0] h>40 w>1202 [760 4 274 34 1 0 1 0] w>730 [425 22 300 16] [0]
+
+
 ; FONT
 set trans.bpm.tap.font [4]
 set trans.bpm.edit.font [4]
