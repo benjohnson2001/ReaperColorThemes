@@ -51,9 +51,6 @@ tcp_folderindent 13
 
 
 
-
-
-
 set buttonSize [20 20 20 20]
 
 
@@ -185,6 +182,8 @@ EndLayout
 
 ; -----------:: MASTER TCP ::--------------
 
+
+
 set leftMasterTcpButtonMargin [5 4 0 0]
 set rightMasterTcpButtonMargin [5 4 0 0]
 set folderMargin [17 0 0 0]
@@ -285,70 +284,6 @@ set master.tcp.fxbyp [0]
 
 
 
-; -----------:: ENVCP ::--------------
-
-set envMargin [18 0 0 0]
-set leftEnvButtonMargin [0 3 0 0]
-set rightEnvButtonMargin [2 3 0 0]
-
-macro setEnvButtonFromLeft element i j
-  set element + envMargin + leftEnvButtonMargin * buttonSize [i j 1 1]
-endmacro
-
-macro setEnvButtonFromRight element i j
-  set temp + rightEnvButtonMargin * buttonSize [i j 1 1]
-  set xMargin - envcp.size{0} + temp{x} buttonSize{w}
-  set element [xMargin temp temp temp 1 0 1 0]
-endmacro
-
-macro setFxEnvButtonFromRight element i j
-  set temp + rightEnvButtonMargin * buttonSize [i j 1 1]
-  set xMargin - envcp.size{0} + temp{x} buttonSize{w}
-  set element envcp_type=4 [xMargin temp temp temp 1 0 1 0] [0]
-endmacro
-
-
-clear envcp.*
-set envcp.size [300 100]
-
-setEnvButtonFromLeft envcp.arm 0 0
-
-set envLabelWidth - tcp.size{0} 125
-set envLabelX + + envMargin rightEnvButtonMargin * buttonSize + [1 1 1 1] [i j 1 1]
-
-set envcp.label [envLabelX 4 envLabelWidth 16 0 0 1 0]
-set envcp.label.margin [0 0 0 0 0.5 0]
-set envcp.label.color [215 215 215]
-
-setEnvButtonFromRight envcp.hide 0 0
-setEnvButtonFromRight envcp.bypass 1 0
-
-setFxEnvButtonFromRight envcp.learn 2 0
-setFxEnvButtonFromRight envcp.mod 3 0
-
-set envcp.label.color [215 215 215]
-set envcp.value.color [215 215 215]
-set envcp.fader.color [0 0 0 0 0 0 0 0]
-
-
-set envFaderX - envLabelX 20
-set envFaderWidth / * envcp.size{0} 2 3
-
-set envcp.fader h>60 [envFaderX 72 envFaderWidth 12 0 1 1 1] [0]
-set envcp.fader.color [0 0 0 0 0 0 0 0]
-
-
-set envLabelX - envcp.size{0} 80
-set envLabelY - envcp.size{1} 30
-set envLabelWidth / * envcp.size{0} 1 4
-
-set envcp.value h>60 [envLabelX envLabelY envLabelWidth 14 1 1 1 1] [0]
-set envcp.value.color h>60 [215 215 215 0] [0]
-set envcp.value.margin h>60 [0 0 0 0 0.5 0.5] [0]
-set envcp.fader.fadermode [-1]
-
-
-
 
 
 
@@ -358,6 +293,9 @@ set envcp.fader.fadermode [-1]
 
 
 ; -----------:: MCP ::---------------
+
+
+
 
 set mcpMargin [5 6 0 0]
 set leftMcpButtonMargin [0 3 0 0]
@@ -395,7 +333,7 @@ setMcpButtonFromLeft mcp.solo 5 1
 ; third row
 
 set mcpPanWidth - mcp.size{0} 12
-set mcp.pan [5 60 mcpPanWidth 13]
+set mcp.pan [5 60 mcpPanWidth 14]
 set mcp.pan.color [215 215 215 0 215 215 215 0]
 
 
@@ -410,7 +348,7 @@ set mcp.pan.fadermode [-1]
 ; fifth row
 
 set mcpVolHeight / * mcp.size{1} 7 13
-set mcp.volume [18 105 23 mcpVolHeight 0 0 0 1]
+set mcp.volume [18 105 22 mcpVolHeight 0 0 0 1]
 set mcp.volume.color [215 215 215 0 215 215 215 0]
 set mcp.volume.fadermode [-1]
 
@@ -514,70 +452,154 @@ set master.mcp.extmixer.mode 			[0]
 	set master.mcp.fxparm.margin        [2 0 4 0 0]
 
 
-; -----------:: TRANS ::-------------
+
+
+; -----------:: ENVELOPE ::--------------
+
+
+set envMargin [18 0 0 0]
+set leftEnvButtonMargin [0 3 0 0]
+set rightEnvButtonMargin [2 3 0 0]
+
+macro setEnvButtonFromLeft element i j
+  set element + envMargin + leftEnvButtonMargin * buttonSize [i j 1 1]
+endmacro
+
+macro setEnvButtonFromRight element i j
+  set temp + rightEnvButtonMargin * buttonSize [i j 1 1]
+  set xMargin - envcp.size{0} + temp{x} buttonSize{w}
+  set element [xMargin temp temp temp 1 0 1 0]
+endmacro
+
+macro setFxEnvButtonFromRight element i j
+  set temp + rightEnvButtonMargin * buttonSize [i j 1 1]
+  set xMargin - envcp.size{0} + temp{x} buttonSize{w}
+  set element envcp_type=4 [xMargin temp temp temp 1 0 1 0] [0]
+endmacro
+
+
+clear envcp.*
+set envcp.size [300 100]
+
+setEnvButtonFromLeft envcp.arm 0 0
+
+set envLabelWidth - tcp.size{0} 125
+set envLabelX + + envMargin rightEnvButtonMargin * buttonSize + [1 1 1 1] [i j 1 1]
+
+set envcp.label [envLabelX 4 envLabelWidth 16 0 0 1 0]
+set envcp.label.margin [0 0 0 0 0.5 0]
+set envcp.label.color [215 215 215]
+
+setEnvButtonFromRight envcp.hide 0 0
+setEnvButtonFromRight envcp.bypass 1 0
+
+setFxEnvButtonFromRight envcp.learn 2 0
+setFxEnvButtonFromRight envcp.mod 3 0
+
+set envcp.label.color [215 215 215]
+set envcp.value.color [215 215 215]
+set envcp.fader.color [0 0 0 0 0 0 0 0]
+
+
+set envFaderX - envLabelX 20
+set envFaderWidth / * envcp.size{0} 2 3
+
+set envcp.fader h>60 [envFaderX 72 envFaderWidth 12 0 1 1 1] [0]
+set envcp.fader.color [0 0 0 0 0 0 0 0]
+
+
+set envLabelX - envcp.size{0} 80
+set envLabelY - envcp.size{1} 30
+set envLabelWidth / * envcp.size{0} 1 4
+
+set envcp.value h>60 [envLabelX envLabelY envLabelWidth 14 1 1 1 1] [0]
+set envcp.value.color h>60 [215 215 215 0] [0]
+set envcp.value.margin h>60 [0 0 0 0 0.5 0.5] [0]
+set envcp.fader.fadermode [-1]
+
+
+
+
+
+
+
+
+
+
+; -----------:: TRANSPORT ::-------------
 
 
 clear trans.*
 
-set trans.size [1041 43]
+set leftTransportMargin [8 0 0 0]
+set topTransportMargin [0 12 0 0]
+set innerTransportButtonMargin [2 0 0 0]
+set transportButtonSize [35 33 35 33]
 
-;set trans.size.minmax [415 43 1203 107]   ; fixed height when undocked
+macro setTransportButtonFromLeft element i j
+  set element + + leftTransportMargin topTransportMargin * + innerTransportButtonMargin transportButtonSize [i j 1 1]
+endmacro
 
-;set trans.size.dockedheight w>921 [43] w>648 [68] w>414 [107] [43]
-
-
-set trans.rew [5 4 35 33]
-set trans.stop [54 4 35 33]
-set trans.play [103 4 35 33]
-set trans.pause w>316 [152 4 35 33] [0]
-set trans.fwd w>414 [201 4 35 33] [0]
-set trans.rec w>414 [250 4 35 33] w>365 [201 4 35 33] [0]
-set trans.repeat w>414 [299 4 35 33] w>365 [250 4 35 33] w>316 [201 4 35 33] [152 4 35 33]
-
-
-
-set trans.status h>106 [104 67 305 34] h>67 w>730 [425 4 300 34] w>648 [425 4 610 34 0 0 1 0] [0] h>40 w>1202 [425 4 300 34] w>730 [425 4 300 16] w>648 [425 4 610 34 0 0 1 0] [0]
-
-
-
-; bpm
-  set trans.bpm.tap h>106 [5 67 45 17] h>67 w>648 [425 43 45 19] [0] h>40 w>921 [732 4 45 17] w>875 [0] w>783 [732 4 45 17] [0]
-  set trans.bpm.edit h>106 [5 67 45 34] h>67 w>730 [425 43 150 19] w>648 [425 43 302 19 0 0 0.5 0] [0] h>40 w>921 [732 4 45 34] w>875 [732 4 45 16] w>783 [732 4 45 34] [0]
-  front trans.bpm.tap
-
-
-
-; time signature
-
-set trans.curtimesig h>106 [57 67 40 34] h>67 w>730 [582 43 143 19] w>648 [734 43 301 19 0.5 0 1 0] [0] h>40 w>921 [784 4 40 34] w>875 [732 22 45 16] w>830 [784 4 40 34] [0]
-
+macro doThis
+; size
+  set trans.size [1400 43]
+  set trans.size.minmax [100 43 4000 4000]
+  set trans.size.dockedheight [43]
+  
+; transport buttons
+  setTransportButtonFromLeft trans.rew 0 0
+  setTransportButtonFromLeft trans.stop 1 0
+  setTransportButtonFromLeft trans.play 2 0
+  setTransportButtonFromLeft trans.pause 3 0
+  setTransportButtonFromLeft trans.fwd 4 0
+  setTransportButtonFromLeft trans.rec 5 0
+  setTransportButtonFromLeft trans.repeat 6 0
 
 
 ; playrate
-set trans.rate h>106 [5 43 92 19 0 0 0 0] h>67 [5 43 92 19 0 0 0 0] h>40 w>1202 ?trans_docked ?trans_flags&2 [669 4 84 34 1 0 1 0] [0] [669 4 84 34 1 0 1 0] w>921 [831 4 84 34 0 0 0 0] w>875 [784 4 84 34 0 0 0 0] [0] 
-set trans.rate.fader [0]
+
+  set transportPlayRateX * + innerTransportButtonMargin transportButtonSize [7.5]
+  set trans.rate ?trans_flags&2 [transportPlayRateX 8 84 34 0 0 0 0] [0]
+
+  set trans.rate.margin [8 0 8 0 0]
+  set trans.rate.fader [0]
 
 
+; status
 
+  set transportStatusX * 2.75 / trans.size{x} 10
+  set trans.status [transportStatusX 6 350 30 0 0 0 0]
 
+; bpm
+
+  set transportBpmX * 6 / trans.size{x} 10
+
+  set trans.bpm.tap [transportBpmX 6 45 17]
+  set trans.bpm.tap.font [4]
+  set trans.bpm.tap.margin [3 2 2 0 0.5]
+  
+  set trans.bpm.edit [transportBpmX 6 45 34]
+  set trans.bpm.edit.font [4]
+  set trans.bpm.edit.margin [1 13 0 0 0.5]
+  
+  front trans.bpm.tap
+  
+  
+; time signature
+
+  set transportTimeSignatureX * 6.5 / trans.size{x} 10
+  set trans.curtimesig ?trans_flags&4 [transportTimeSignatureX 4 40 34] [0]
+  set trans.curtimesig.font [3]
+  set trans.curtimesig.margin [0 0 0 0 0.5]
 
 
 ; selection
-set trans.sel h>106 [104 43 305 19 0 0 0 0] h>67 [104 43 305 19 0 0 0 0] h>40 w>1202 [760 4 274 34 1 0 1 0] w>730 [425 22 300 16] [0]
 
+  set transportSelectionX * 8 / trans.size{x} 10
+  set trans.sel  [transportSelectionX 4 300 40]
+  set trans.sel.font [3]
+  set trans.sel.color [175 175 175]
+  set trans.sel.margin [8 0 8 0 0]
+endMacro
 
-; FONT
-set trans.bpm.tap.font [4]
-set trans.bpm.edit.font [4]
-set trans.curtimesig.font h>106 [3] h>67 [4] h>40 w>921 [3] w>875 [4] [3]
-set trans.rate.font h>67 [4] [3]
-set trans.sel.font h>67 [4] h>40 w>1202 [3] [4]
-; MARGIN
-set trans.status.margin h>106 [10 2 8 2] h>67 w>730 [10 2 8 2] [10 7 8 7] h>40 w>1202 [10 2 8 2] w>730 [8 1 8 2] [10 7 8 7]
-set trans.bpm.tap.margin h>106 [3 2 2 0 0.5] h>67 [3 0 2 0 0.5] h>40 [3 2 2 0 0.5]
-set trans.bpm.edit.margin h>106 [1 13 0 0 0.5] h>67 [44 0 0 0 0.5] h>40 w>921 [1 13 0 0 0.5] w>875 [1 0 0 1 0.5] [1 13 0 0 0.5]
-set trans.curtimesig.margin [1 0 0 0 0.5]
-set trans.rate.margin [8 0 8 0 0]
-set trans.sel.margin [8 0 8 0 0]
-
-
+doThis
